@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col lg-12">
+        {% import 'macros/nav.html.twig' as nav %}
+        {{ nav.bar ([{
+            'caption': 'Home',
+            'icon': 'mdi-home',
+            'page': 'home'
+        }, {
+            'caption': 'Features',
+            'icon': 'mdi-format-list-numbers',
+            'page': 'feats'
+        }, {
+            'caption': 'Demos',
+            'icon': 'mdi-gamepad-variant',
+            'page': 'demos'
+        }, {
+            'caption': 'Level editor',
+            'icon': 'mdi-grid',
+            'url': '../rcwe'
+        }, {
+            'caption': 'GitHub',
+            'icon': 'mdi-github-circle',
+            'page': 'github'
+        }, {
+            'caption': 'Youtube',
+            'icon': 'mdi-youtube-play',
+            'page': 'youtube'
+        }
+        ]) }}
+    </div>
+</div>

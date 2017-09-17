@@ -1,0 +1,12 @@
+{
+    "name": "ralphy/twig-standalone",
+    "require": {
+        "twig/twig": "^2.4"
+    },
+    "authors": [
+        {
+            "name": "Laboralphy",
+            "email": "raphael.marandet@gmail.com"
+        }
+    ]
+}

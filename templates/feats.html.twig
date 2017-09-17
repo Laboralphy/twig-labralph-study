@@ -1,0 +1,21 @@
+{% extends "layout/layout.html.twig" %}
+{% import "macros/list.html.twig" as list %}
+{% block content %}
+
+    {% embed "layout/card.html.twig" with {'size': 12} %}
+        {% block title %}Basic Raycasting{% endblock %}
+        {% block content %}
+<p>The primary task of a Raycasting Engine is to render 3D simplified environnement.
+    It is said that Raycasting is a 2.5D algorithm because the 3D environnement
+    is rendered from a 2D map and there are only perpendicular walls only flat floor and
+    ceiling, and so on...</p>
+<p>This simplicity has its advantages :
+    {{ list.quick([
+        'fast level design',
+        'runs on slow computers',
+        'fast assets downloading'
+    ]) }}
+</p>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

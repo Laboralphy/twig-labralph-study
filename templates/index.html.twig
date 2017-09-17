@@ -1,0 +1,16 @@
+{% extends "layout/layout.html.twig" %}
+{% block content %}
+
+    {% embed "layout/card.html.twig" with {'size': 12} %}
+        {% block title %}What is Raycasting ??{% endblock %}
+        {% block content %}
+<p>Raycasting is a 3D rendering method using simple computations.
+It renders 3D environments but with lots of limitation to ensure the highest frame rate.
+</p>
+<p>This technic was mainly used in older 90's games like <b>Wolfenstein 3D</b>
+and <b>Doom</b>. Games built around this rendering method are easily designed because they are
+essentially build out of a 2D map.</p>
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}

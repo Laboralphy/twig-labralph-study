@@ -1,0 +1,9 @@
+{# builds a quicklist : all items are string of plain text only #}
+{% macro quick (items) %}
+    <ul>
+    {% for item in items %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+{% endmacro %}
+

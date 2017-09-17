@@ -1,0 +1,32 @@
+{% macro ulist (options) %}
+    <ul>
+        {% for option in options %}
+            {% set caption = option.caption %}
+            {% set icon = option.icon | default('') %}
+            {% set page = option.page %}
+            <li><a class="btn" href="#">
+                    {% if icon | length > 0 %}
+                        <span class="mdi {{ icon }}"></span>
+                    {% endif %}
+                    {{ caption }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
+
+{% macro bar (options) %}
+    {% import _self as nav %}
+    <nav>
+        {{ nav.ulist(options) }}
+    </nav>
+{% endmacro %}
+
+
+{% macro block (options) %}
+    {% import _self as nav %}
+    <nav class="block">
+        {{ nav.ulist(options) }}
+    </nav>
+{% endmacro %}
