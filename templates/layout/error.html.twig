@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>TITLE</title>
+    <link rel="stylesheet" type="text/css" href="styles/responsive/normalize.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="styles/responsive/starter.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="styles/responsive/custom.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="styles/responsive/colors.css" media="all"/>
+    <!-- npm install mdi -->
+    <link rel="stylesheet" type="text/css" href="styles/mdi/css/materialdesignicons.min.css" media="all"/>
+
+    <!-- MOBILE NO RESCALE DIRECTIVE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+</head>
+<body>
+<div class="row">
+    <div class="col lg-12">
+        <section class="card">
+            <div class="row">
+                <div class="col lg-12">
+                    <h1 class="title red">An error occured</h1>
+                    <h4>{{ message }}</h4>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="row">
+    <div class="col lg-12">
+        <section class="card">
+            <div class="row">
+                <div class="col lg-12">
+                    <ul>
+                        <li>
+                            in file <b>{{ file }}</b>
+                        </li>
+                        <li>
+                            at line <b>{{ line }}</b>
+                        </li>
+                        <li>
+                            <ol start="{{ start }}">
+                            {% set  i = start %}
+                            {% for s in source %}
+                                <li>{% if i == line %}<b>{% endif %}{{ s }}{% if i == line %}</b>{% endif %}</li>
+                                {% set  i = i + 1 %}
+                            {% endfor %}
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+</body>
+</html>
+

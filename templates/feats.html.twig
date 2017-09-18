@@ -1,21 +1,202 @@
-{% extends "layout/layout.html.twig" %}
-{% import "macros/list.html.twig" as list %}
+{% extends 'layout/layout.html.twig' %}
 {% block content %}
 
-    {% embed "layout/card.html.twig" with {'size': 12} %}
+    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
         {% block title %}Basic Raycasting{% endblock %}
         {% block content %}
-<p>The primary task of a Raycasting Engine is to render 3D simplified environnement.
-    It is said that Raycasting is a 2.5D algorithm because the 3D environnement
-    is rendered from a 2D map and there are only perpendicular walls only flat floor and
-    ceiling, and so on...</p>
-<p>This simplicity has its advantages :
-    {{ list.quick([
-        'fast level design',
-        'runs on slow computers',
-        'fast assets downloading'
-    ]) }}
-</p>
+            {% import 'macros/list.html.twig' as list %}
+            <p>The primary task of a Raycasting Engine is to render 3D simplified environnement.
+                It is said that Raycasting is a 2.5D algorithm because the 3D environnement
+                is rendered from a 2D map and there are only perpendicular walls only flat floor and
+                ceiling, and so on... A lot of limitations that are not present in real 3D engines.</p>
+            <p>But this simplicity has its own advantages :
+                {{ list.quick ([
+                'fast level design.',
+                'No need of complex geometry understanding.',
+                'runs on slow computers.',
+                'fast assets downloading.'
+                ]) }}
+            </p>
+<p>Let's have a look at what features are available in this engine...</p>
         {% endblock %}
     {% endembed %}
+
+
+
+    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+        {% block title %}Door management{% endblock %}
+        {% block content %}
+            <p>There are several type of doors, the only difference is the way they open :
+                They can slide to any direction (left, right, top, bottom), there are even
+                double panel sliding doors as well.</p>
+            {% import 'macros/img.html.twig' as img %}
+            {{ img.row (4, [{
+                'src': 'images/feats/open-door/open-door-0.png',
+                'caption': 'Double panel door'
+            }, {
+                'src': 'images/feats/open-door/open-door-1.png',
+                'caption': 'Top sliding door'
+            }])  }}
+        {% endblock %}
+    {% endembed %}
+
+
+
+    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+        {% block title %}Secret door management{% endblock %}
+        {% block content %}
+            <p>Just like the game <i>wolfenstein 3D</i>,
+                walls can be pushed to reveal secret areas.</p>
+            {% import 'macros/img.html.twig' as img %}
+            {{ img.row (3, [{
+                'src': 'images/feats/secret-door/secret-door-0.png',
+                'caption': 'This wall has been pushed, and reveals a hidden zone !'
+            }])  }}
+        {% endblock %}
+    {% endembed %}
+
+
+
+    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+        {% block title %}Sprite management{% endblock %}
+        {% block content %}
+            <p>Animated sprites with composite effect (alpha, opacity...).
+                Each sprite can have several overlays so rendering "haze" effects
+                is possible.</p>
+            {% import 'macros/img.html.twig' as img %}
+            {{ img.row (3, [{
+                'src': 'images/feats/sprites/scr3.jpg',
+                'caption': 'Sprites from Blight Magic'
+            }, {
+                'src': 'images/feats/sprites/scr19.jpg',
+                'caption': 'Sprites from Blight Magic'
+            }, {
+                'src': 'images/feats/sprites/scr20.jpg',
+                'caption': 'Sprites from Blight Magic'
+            }])  }}
+        {% endblock %}
+    {% endembed %}
+
+
+
+    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+        {% block title %}Floor and ceiling textures{% endblock %}
+        {% block content %}
+            <p>Floor and ceiling can have textures, just like walls.</p>
+            {% import 'macros/img.html.twig' as img %}
+            {{ img.row (3, [{
+                'src': 'images/feats/floorceil/scr13.jpg',
+                'caption': 'Without floor and ceiling textures'
+            }, {
+                'src': 'images/feats/floorceil/scr18.jpg',
+                'caption': 'With floor and ceiling textures (looks better)'
+            }])  }}
+        {% endblock %}
+    {% endembed %}
+
+
+
+    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+        {% block title %}Outdoor environnement / sky texture{% endblock %}
+        {% block content %}
+            <p>Wall, ceiling, and floor textures can be replaced by a sky texture.</p>
+            {% import 'macros/img.html.twig' as img %}
+            {{ img.row (4, [{
+                'src': 'images/feats/sky/sky-0.png',
+                'caption': 'Sky is visible outside'
+            }, {
+                'src': 'images/feats/sky/sky-1.png',
+                'caption': 'Red sky'
+            }, {
+                'src': 'images/feats/sky/sky-2.png',
+                'caption': 'Sky is visible through the ceilling'
+            }, {
+                'src': 'images/feats/sky/sky-3.png',
+                'caption': 'Dark sky and landscape'
+            }]) }}
+        {% endblock %}
+    {% endembed %}
+
+
+
+    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+        {% block title %}Animated wall textures{% endblock %}
+        {% block content %}
+            <p>Walls can have animated textures.</p>
+            {% import 'macros/img.html.twig' as img %}
+            {{ img.row (3, [{
+                'src': 'images/feats/animated/aw-0.gif',
+                'caption': 'Fireplace'
+            }, {
+                'src': 'images/feats/animated/aw-1.gif',
+                'caption': 'Pixelated fireplace'
+            }])  }}
+        {% endblock %}
+    {% endembed %}
+
+
+    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+        {% block title %}Dynamic texture modification{% endblock %}
+        {% block content %}
+            <p>Wall, floor and ceiling textures can be modified,
+                allowing programmer to draw anything on it (like drawing on a canvas and using canvas
+                context methods). This ability is used for static lighting (lighten walls that are
+                near light emmiting sources).</p>
+            {% import 'macros/img.html.twig' as img %}
+            {{ img.row (3, [{
+                'src': 'images/feats/decals/decal-0.png',
+                'caption': 'Ketchup on the wall !'
+            }, {
+                'src': 'images/feats/light-effects/light-effects-1.png',
+                'caption': 'Candles may affect wall textures'
+            }, {
+                'src': 'images/feats/light-effects/light-effects-0.png',
+                'caption': 'Light emmitting objects cast light and shadows on both floor and ceiling'
+            }])  }}
+        {% endblock %}
+    {% endembed %}
+
+
+    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+        {% block title %}Audio system{% endblock %}
+        {% block content %}
+            <p>It can't be heared here but the (rudimentary) audio system handles distances
+                (close sounds are louder than distant ones). And it handles crossfade
+                background soundtrack.</p>
+        {% endblock %}
+    {% endembed %}
+
+
+    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+        {% block title %}Using VR Glasses{% endblock %}
+        {% block content %}
+            <p>The framework has the ability to switch between normal rendering
+                and <b>VR Rendering</b>.</p>
+            <p>You should try it out with <a href=\"https://www.google.fr/search?q=vr+glasses+cardboard\">
+                    this kind of cardboard glasses</a>.</p>
+            {% import 'macros/img.html.twig' as img %}
+            {{ img.row ('lg-6 lg-offset-3 sm-8 sm-offset-2 xs-12 xs-offset-0', [{
+                'src': 'images/feats/vr/vr-glasses.jpg',
+                'caption': 'VR Glasses'
+            }]) }}
+            {{ img.row (4, [{
+                'src': 'images/feats/vr/city-vr-scr-0.png',
+                'caption': 'city : normal'
+            }, {
+                'src': 'images/feats/vr/city-vr-scr-1.png',
+                'caption': 'city : vr-rendering'
+            }, {
+                'src': 'images/feats/vr/mans-vr-scr-0.png',
+                'caption': 'mansion : normal'
+            }, {
+                'src': 'images/feats/vr/mans-vr-scr-1.png',
+                'caption': 'mansion : vr-rendering'
+            }])  }}
+        {% endblock %}
+    {% endembed %}
+
+
+
+
+
 {% endblock %}

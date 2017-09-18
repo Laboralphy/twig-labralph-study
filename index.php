@@ -61,7 +61,7 @@ class Application {
      * @param $sTemplate string template file name
      * @param $data array variables used by the template
      */
-    public function template($sTemplate, array $data = array())  {
+    public function template(string $sTemplate, array $data = array())  {
         $sFileName = $this->path(self::PATH_TEMPLATES, $sTemplate . '.html.twig');
         if (file_exists($sFileName)) {
             print $this->_twig->render($sTemplate . '.html.twig', $data);
@@ -77,8 +77,21 @@ class Application {
                 $sPage = 'index';
             }
             $this->template($sPage);
-        } catch (Exception $e) {
-
+        } catch (Twig_Error $e) {
+            $aSource = explode("\n", $e->getSourceContext()->getCode());
+            $iLine = $e->getTemplateLine();
+            $iStart = max(0, $iLine - 3);
+            $nLen = 5;
+            $aContext = array_slice($aSource, $iStart, $nLen);
+            $a = array(
+                'file' => $e->getSourceContext()->getName(),
+                'line' => $iLine,
+                'tline' => $e->getTemplateLine(),
+                'message' => $e->getMessage(),
+                'source' => $aContext,
+                'start' => $iStart + 1
+            );
+            $this->template('layout/error', $a);
         }
     }
 }

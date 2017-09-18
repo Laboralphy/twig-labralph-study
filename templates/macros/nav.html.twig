@@ -4,7 +4,7 @@
             {% set caption = option.caption %}
             {% set icon = option.icon | default('') %}
             {% set page = option.page %}
-            <li><a class="btn" href="#">
+            <li><a class="btn" {% if page %}href="?p={{ page }}"{% endif %}>
                     {% if icon | length > 0 %}
                         <span class="mdi {{ icon }}"></span>
                     {% endif %}

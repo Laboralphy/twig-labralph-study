@@ -1,7 +1,7 @@
-{% extends "layout/layout.html.twig" %}
+{% extends 'layout/layout.html.twig' %}
 {% block content %}
 
-    {% embed "layout/card.html.twig" with {'size': 12} %}
+    {% embed 'layout/card.html.twig' with {'size': 'lg-12'} %}
         {% block title %}What is Raycasting ??{% endblock %}
         {% block content %}
 <p>Raycasting is a 3D rendering method using simple computations.

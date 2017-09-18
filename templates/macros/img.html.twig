@@ -1,0 +1,24 @@
+{% macro row (colcount, items) %}
+    {% import _self as img %}
+    {% if colcount == 3 %}
+        {% set qsize = 'lg-4 sm-6 xs-12' %}
+    {% elseif colcount != '' %}
+        {% set qsize = colcount %}
+    {% else %}
+        {% set qsize = 'lg-3 md-6 xs-12' %}
+    {% endif %}
+    <div class="row">
+    {% for item in items %}
+        <div class="col {{ qsize }}">
+            {{ img.fig (item.src, item.caption) }}
+        </div>
+    {% endfor %}
+    </div>
+{% endmacro %}
+
+{% macro fig (src, caption) %}
+    <figure>
+        <img src="{{ src }}" />
+        <figcaption>{{ caption }}</figcaption>
+    </figure>
+{% endmacro %}
