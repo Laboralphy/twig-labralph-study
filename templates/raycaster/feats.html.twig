@@ -1,7 +1,7 @@
-{% extends 'layout/layout.html.twig' %}
+{% extends 'raycaster/layout.html.twig' %}
 {% block content %}
-
-    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+    {{ parent() }}
+    {% embed "layout/card.html.twig" %}
         {% block title %}Basic Raycasting{% endblock %}
         {% block content %}
             {% import 'macros/list.html.twig' as list %}
@@ -23,7 +23,7 @@
 
 
 
-    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+    {% embed "layout/card.html.twig" %}
         {% block title %}Door management{% endblock %}
         {% block content %}
             <p>There are several type of doors, the only difference is the way they open :
@@ -42,7 +42,7 @@
 
 
 
-    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+    {% embed "layout/card.html.twig" %}
         {% block title %}Secret door management{% endblock %}
         {% block content %}
             <p>Just like the game <i>wolfenstein 3D</i>,
@@ -57,7 +57,7 @@
 
 
 
-    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+    {% embed "layout/card.html.twig" %}
         {% block title %}Sprite management{% endblock %}
         {% block content %}
             <p>Animated sprites with composite effect (alpha, opacity...).
@@ -79,7 +79,7 @@
 
 
 
-    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+    {% embed "layout/card.html.twig" %}
         {% block title %}Floor and ceiling textures{% endblock %}
         {% block content %}
             <p>Floor and ceiling can have textures, just like walls.</p>
@@ -96,7 +96,7 @@
 
 
 
-    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+    {% embed "layout/card.html.twig" %}
         {% block title %}Outdoor environnement / sky texture{% endblock %}
         {% block content %}
             <p>Wall, ceiling, and floor textures can be replaced by a sky texture.</p>
@@ -119,7 +119,7 @@
 
 
 
-    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+    {% embed "layout/card.html.twig" %}
         {% block title %}Animated wall textures{% endblock %}
         {% block content %}
             <p>Walls can have animated textures.</p>
@@ -135,7 +135,7 @@
     {% endembed %}
 
 
-    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+    {% embed "layout/card.html.twig" %}
         {% block title %}Dynamic texture modification{% endblock %}
         {% block content %}
             <p>Wall, floor and ceiling textures can be modified,
@@ -157,7 +157,7 @@
     {% endembed %}
 
 
-    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+    {% embed "layout/card.html.twig" %}
         {% block title %}Audio system{% endblock %}
         {% block content %}
             <p>It can't be heared here but the (rudimentary) audio system handles distances
@@ -167,7 +167,7 @@
     {% endembed %}
 
 
-    {% embed "layout/card.html.twig" with {'size': 'lg-12'} %}
+    {% embed "layout/card.html.twig" %}
         {% block title %}Using VR Glasses{% endblock %}
         {% block content %}
             <p>The framework has the ability to switch between normal rendering

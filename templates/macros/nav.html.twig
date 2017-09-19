@@ -3,8 +3,9 @@
         {% for option in options %}
             {% set caption = option.caption %}
             {% set icon = option.icon | default('') %}
-            {% set page = option.page %}
-            <li><a class="btn" {% if page %}href="?p={{ page }}"{% endif %}>
+            {% set page = option.page | default('') %}
+            {% set url = option.url | default('') %}
+            <li><a class="btn" {% if page %}href="?p={{ page }}"{% endif %}{% if url %}href="{{ url }}"{% endif %}>
                     {% if icon | length > 0 %}
                         <span class="mdi {{ icon }}"></span>
                     {% endif %}

@@ -1,0 +1,14 @@
+{% extends 'raycaster/layout.html.twig' %}
+{% block content %}
+    {{ parent() }}
+
+    {% embed 'layout/card.html.twig' %}
+        {% block title %}YouTube channel{% endblock %}
+        {% block content %}
+            <p>Visit the YouTube raycaster playlist &amp; my channel, for more game videos :
+                <a href="https://www.youtube.com/playlist?list=PLxuuwonTZXqdi0AJqDLoajMDE44MsipUH">The HTML 5 Raycaster playlist</a>
+            </p>
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}

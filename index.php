@@ -61,7 +61,7 @@ class Application {
      * @param $sTemplate string template file name
      * @param $data array variables used by the template
      */
-    public function template(string $sTemplate, array $data = array())  {
+    public function template($sTemplate, array $data = array())  {
         $sFileName = $this->path(self::PATH_TEMPLATES, $sTemplate . '.html.twig');
         if (file_exists($sFileName)) {
             print $this->_twig->render($sTemplate . '.html.twig', $data);
@@ -70,11 +70,16 @@ class Application {
         }
     }
 
+    /**
+     * Runs the application main function
+     * Parses parameter "p"
+     * Loads the appropriate template and displays it
+     */
     public function run() {
         try {
-            $sPage = $this->param('p');
+            $sPage = strtr($this->param('p'), '.', '/');
             if ($sPage === false) {
-                $sPage = 'index';
+                $sPage = 'raycaster/index';
             }
             $this->template($sPage);
         } catch (Twig_Error $e) {
