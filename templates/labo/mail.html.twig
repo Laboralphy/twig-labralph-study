@@ -1,0 +1,24 @@
+{% extends 'labo/layout.html.twig' %}
+{% block content %}
+    {{ parent() }}
+
+    {% embed 'layout/card.html.twig' %}
+        {% block title %}Contact me{% endblock %}
+        {% block content %}
+
+            <p>I'm Raphaël Marandet, you may contact me by e-mail, and ask me any questions related to
+            this website. I speak french, english and a little bit of japanese.</p>
+            <a href="#" class="btn spoofed" data-spoof="`ymP<K20vsj]oTwi&?(DO%?-fB">
+                <span class="mdi mdi-gmail"></span>
+            </a>
+
+        {% endblock %}
+    {% endembed %}
+
+
+{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <script type="application/javascript" src="scripts/spoofer.js"></script>
+    <script type="application/javascript" src="scripts/labo/mail.js"></script>
+{% endblock %}

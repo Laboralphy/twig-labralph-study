@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col lg-12">
+        <section class="card">
+            <div class="row">
+                <div class="col lg-12">
+                    <h1 class="title blue">Laboralphy</h1>
+                </div>
+                <div class="col lg-12">
+                    <div class="row">
+                        <div class="col lg-12">
+                            {% import 'macros/nav.html.twig' as nav %}
+                            {{ nav.bar ([{
+                                'caption': 'Home',
+                                'icon': 'mdi-home',
+                                'page': 'labo.index'
+                            }, {
+                                'caption': 'Raycasting',
+                                'icon': 'mdi-grid-off',
+                                'page': 'raycaster.index'
+                            }, {
+                                'caption': 'Contact me',
+                                'icon': 'mdi-contact-mail',
+                                'page': 'labo.mail'
+                            }
+                            ]) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

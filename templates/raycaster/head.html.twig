@@ -7,7 +7,41 @@
                     <h4>A Raycasting Framework for building HTML 5 Games</h4>
                 </div>
                 <div class="col lg-12">
-                    {% include 'raycaster/menu-main.html.twig' %}
+                    <div class="row">
+                        <div class="col lg-12">
+                            {% import 'macros/nav.html.twig' as nav %}
+                            {{ nav.bar ([{
+                                'caption': '',
+                                'icon': 'mdi-home',
+                                'page': 'labo.index'
+                            }, {
+                                'caption': 'Raycasting',
+                                'icon': 'mdi-grid-off',
+                                'page': 'raycaster.index'
+                            }, {
+                                'caption': 'Features',
+                                'icon': 'mdi-format-list-numbers',
+                                'page': 'raycaster.feats'
+                            }, {
+                                'caption': 'Demos',
+                                'icon': 'mdi-gamepad-variant',
+                                'page': 'raycaster.demos'
+                            }, {
+                                'caption': 'Level editor',
+                                'icon': 'mdi-grid',
+                                'url': '../raycaster/dynamics/rcwe'
+                            }, {
+                                'caption': 'GitHub',
+                                'icon': 'mdi-github-circle',
+                                'page': 'raycaster.github'
+                            }, {
+                                'caption': 'Youtube',
+                                'icon': 'mdi-youtube-play',
+                                'page': 'raycaster.youtube'
+                            }
+                            ]) }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

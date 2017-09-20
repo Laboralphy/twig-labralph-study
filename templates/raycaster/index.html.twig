@@ -2,11 +2,20 @@
 {% block content %}
     {{ parent() }}
 
+    {% embed 'layout/card.html.twig' %}
+        {% block title %}Making old school games with raycasting.{% endblock %}
+        {% block content %}
+            <p>You are currently reading something about my <b>Raycasting engine</b> :
+            A game engine that can build 3Dish games like the ones that were out
+            during the early 1990's. Titles like <i>Doom</i>, <i>Duke Nukem 3D</i>
+            and others come to mind.</p>
+        {% endblock %}
+    {% endembed %}
     <div class="row">
         <div class="col lg-12">
             <section class="card">
                 <div class="row">
-                    <div class="col lg-8 md-12">
+                    <div class="col lg-8 xs-12">
                         <h3>What is Raycasting ?</h3>
                         <p>Raycasting is a 3D rendering method using simple computations.
                             It renders 3D environments but with lots of limitation to ensure the highest frame rate.
@@ -25,7 +34,7 @@
                         "An HTML 5 Level Editor is available online - Designing levels is now easy."
                         ]) }}
                     </div>
-                    <div class="col lg-4 md-12">
+                    <div class="col lg-4 xs-12">
                         <figure>
                             <img src="images/raycaster/raycasting.png"/>
                             <figcaption>How raycasting works.</figcaption>
