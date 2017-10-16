@@ -1,0 +1,16 @@
+{
+  "environments": {
+    "active": "prod",
+    "dev": {
+      "cache": "auto_reload",
+      "debug": true
+    },
+    "prod": {
+      "cache": "auto_reload",
+      "debug": false
+    }
+  },
+  "defaults": {
+    "page": "labo.index"
+  }
+}

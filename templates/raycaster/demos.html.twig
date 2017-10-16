@@ -5,8 +5,9 @@
     {% embed 'layout/card.html.twig' %}
         {% block title %}Raycaster Demos{% endblock %}
         {% block content %}
+            <p>A set of demos that use the same game raycasting engine.</p>
             {% import 'macros/img.html.twig' as img %}
-            {% set path_demos = '../raycaster/modules/' %}
+            {% set path_demos = 'raycaster/modules/' %}
             <div class="row">
                 {% for s in [
                     'whiteroom',

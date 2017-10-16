@@ -15,32 +15,68 @@ class Application {
     protected $_loader;
     protected $_twig;
 
-    static $CONFIG = array(
-        'cache' => false,
-        'debug' => true
-    );
+    protected $_oConfig = null;
+    protected $_env;
 
     /**
      * Application constructor.
      * Initializes twig
      */
     public function __construct() {
+        $this->loadConfig('config.json');
+        $aParamEnvList = $this->_oConfig['environments'];
+        $sParamActive = $aParamEnvList['active'];
+        $env = $aParamEnvList[$sParamActive];
         $this->_loader = new Twig_Loader_Filesystem($this->path(self::PATH_TEMPLATES));
         $this->_twig = new Twig_Environment($this->_loader, array(
-            'cache' => self::$CONFIG['cache'] ? $this->path(self::PATH_CACHE) : false
+            'cache' => $env['cache'] ? $this->path(self::PATH_CACHE) : false,
+            'debug' => $env['debug'],
+            'auto_reload' => true
         ));
     }
 
     /**
+     * loads a config file (json format);
+     * and loads it in oConfig protected property
+     * @param string $sFile
+     * @throws Exception
+     */
+    public function loadConfig($sFile = 'config.json') {
+        if (file_exists($sFile)) {
+            $this->_oConfig = json_decode(file_get_contents($sFile), true);
+            if (!$this->_oConfig) {
+                throw new Exception('invalid configuration file');
+            }
+        } else {
+            throw new Exception('config file not found');
+        }
+    }
+
+    /**
+     * returns the default values for a parameters
+     * @param $sParam string
+     * @return string
+     */
+    public function defaultValue($sParam) {
+        if (array_key_exists($sParam, $this->_oConfig['defaults'])) {
+            return $this->_oConfig['defaults'][$sParam];
+        } else {
+            return '';
+        }
+    }
+
+
+    /**
      * Retuns the value of the specified GET parameter
      * @param $sParam string parameter name
-     * @return string|boolean value of the parameter, false if not found
+     * @param $sDefault string default value for this parameter
+     * @return string value of the parameter, false if not found
      */
-    public function param($sParam) {
+    public function param($sParam, $sDefault = '') {
         if (array_key_exists($sParam, $_GET)) {
             return $_GET[$sParam];
         } else {
-            return false;
+            return $sDefault;
         }
     }
 
@@ -77,10 +113,10 @@ class Application {
      */
     public function run() {
         try {
-            $sPage = strtr($this->param('p'), '.', '/');
-            if ($sPage === false) {
-                $sPage = 'raycaster/index';
-            }
+            $sPage = strtr(
+                $this->param('p', $this->defaultValue('page')),
+                '.', '/'
+            );
             $this->template($sPage);
         } catch (Twig_Error $e) {
             $aSource = explode("\n", $e->getSourceContext()->getCode());
@@ -101,6 +137,12 @@ class Application {
     }
 }
 
-$app = new Application();
-$app->run();
+try {
+    $app = new Application();
+    $app->run();
+} catch (Exception $e) {
+    header('Content-type: text/plain');
+    print "Error 500\nAn exception occured : ";
+    print $e->getMessage();
+}
 

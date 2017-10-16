@@ -1,0 +1,10 @@
+/*
+basic styles for this site
+ */
+
+
+.warning {
+    font-weight: bold;
+    color: #800;
+    font-size: 1.1em;
+}
